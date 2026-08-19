@@ -27,7 +27,9 @@ Novos anos são reconhecidos automaticamente quando acrescentados à aba de índ
 
 ## Observações
 
-- A série de reservas é um índice estimado, não a quantidade absoluta de reservas.
+- Todos os indicadores referem-se a Gramado, exceto a taxa de ocupação, que acompanha Gramado e Canela.
+- Séries estimadas aparecem com linhas tracejadas e identificação explícita na legenda.
+- Todas as séries de reservas são estimadas e exibidas apenas como tendência visual, sem escala numérica nem valores ao passar o cursor.
 - Anos incompletos são tratados de acordo com os meses disponíveis.
 - Origem e pagamento utilizam o último ano disponível se o ano selecionado não tiver esses dados.
 - O painel utiliza Chart.js e SheetJS por CDN, portanto precisa de acesso à internet.

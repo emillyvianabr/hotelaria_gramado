@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7f5f2">
+  <meta name="theme-color" content="#f5f7f3">
   <meta name="description" content="Monitor de indicadores de hotelaria, demanda e comportamento turístico em Gramado e Canela.">
   <title>Observatório de Hotelaria | Gramado & Canela</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,7 +20,7 @@
       <div>
         <span class="eyebrow">INTELIGÊNCIA DE MERCADO · SERRA GAÚCHA</span>
         <h1>Hotelaria <span>&</span> demanda turística</h1>
-        <p class="intro">Um retrato do custo de hospedagem, da ocupação e das decisões de viagem em Gramado e Canela.</p>
+        <p class="intro">Indicadores de hotelaria de Gramado; a taxa de ocupação acompanha, conjuntamente, Gramado e Canela.</p>
       </div>
       <div class="source-chip"><span></span><div><strong>BASE CONECTADA</strong><small id="updated-at">Lendo dados.xlsx</small></div></div>
     </header>
@@ -32,21 +32,23 @@
       <label class="toggle"><input id="show-estimates" type="checkbox" checked><span>Exibir séries estimadas</span></label>
     </section>
 
+    <section class="context-note panel" aria-label="Abrangência e identificação dos dados"><p><strong>Abrangência:</strong> diária média, reservas e comportamento do viajante referem-se a <strong>Gramado</strong>. Apenas a ocupação hoteleira contempla <strong>Gramado e Canela</strong>.</p><p class="estimate-key"><span class="estimate-sample" aria-hidden="true"></span><strong>Linha tracejada = dado estimado.</strong> Séries reais são exibidas com linha contínua.</p></section>
+
     <div id="error-message" class="error-panel" hidden></div>
     <section id="kpis" class="kpi-grid" aria-label="Indicadores principais"></section>
 
-    <section class="section-heading"><div><span class="eyebrow">CUSTO DA HOSPEDAGEM</span><h2>Quanto custa se hospedar?</h2></div><p>Compare tarifas mensais e acompanhe a trajetória anual do destino.</p></section>
-    <section class="chart-grid"><article class="panel chart-card wide"><div class="card-head"><div><h3>Diária média por mês</h3><p>Valor médio da hospedagem, em reais.</p></div><span class="badge">R$ / diária</span></div><div class="chart-box"><canvas id="daily-chart"></canvas></div></article><article class="panel chart-card"><div class="card-head"><div><h3>Trajetória anual</h3><p>Diária média informada nos relatórios.</p></div></div><div class="chart-box"><canvas id="annual-chart"></canvas></div></article></section>
+    <section class="section-heading"><div><span class="eyebrow">CUSTO DA HOSPEDAGEM · GRAMADO</span><h2>Quanto custa se hospedar?</h2></div><p>Compare tarifas mensais de Gramado e identifique as estimativas pelas linhas tracejadas.</p></section>
+    <section class="chart-grid"><article class="panel chart-card wide"><div class="card-head"><div><h3>Diária média por mês</h3><p>Gramado · linhas tracejadas indicam valores estimados.</p></div><span class="badge">R$ / diária</span></div><div class="chart-box"><canvas id="daily-chart"></canvas></div></article><article class="panel chart-card"><div class="card-head"><div><h3>Trajetória anual</h3><p>Gramado · diária média informada nos relatórios.</p></div></div><div class="chart-box"><canvas id="annual-chart"></canvas></div></article></section>
 
     <section class="section-heading"><div><span class="eyebrow">MOVIMENTO DO DESTINO</span><h2>A demanda acompanha o preço?</h2></div><p>Ocupação observada e índice visual de reservas para identificar períodos de retração e retomada.</p></section>
-    <section class="chart-grid"><article class="panel chart-card wide"><div class="card-head"><div><h3>Taxa de ocupação mensal</h3><p>Média das taxas diárias registradas.</p></div><span class="badge">% de ocupação</span></div><div class="chart-box"><canvas id="occupancy-chart"></canvas></div></article><article class="panel chart-card"><div class="card-head"><div><h3>Índice de reservas</h3><p>Estimativa gráfica; não representa reservas absolutas.</p></div></div><div class="chart-box"><canvas id="booking-chart"></canvas></div></article></section>
+    <section class="chart-grid"><article class="panel chart-card wide"><div class="card-head"><div><h3>Taxa de ocupação mensal</h3><p>Gramado e Canela · média das taxas diárias registradas.</p></div><span class="badge">GRAMADO + CANELA</span></div><div class="chart-box"><canvas id="occupancy-chart"></canvas></div></article><article class="panel chart-card"><div class="card-head"><div><h3>Tendência de reservas</h3><p>Gramado · visualização exclusivamente estimada, sem valores numéricos.</p></div><span class="badge estimate-badge">ESTIMADO</span></div><div class="chart-box"><canvas id="booking-chart"></canvas></div></article></section>
 
-    <section class="section-heading"><div><span class="eyebrow">COMPORTAMENTO DO VIAJANTE</span><h2>Como o turista está decidindo?</h2></div><p>Planejamento, permanência, cancelamentos e o perfil das reservas disponíveis.</p></section>
+    <section class="section-heading"><div><span class="eyebrow">COMPORTAMENTO DO VIAJANTE · GRAMADO</span><h2>Como o turista está decidindo?</h2></div><p>Planejamento, permanência, cancelamentos e perfil das reservas em Gramado.</p></section>
     <section class="behavior-grid"><article class="panel chart-card"><div class="card-head"><div><h3>Antecedência de compra</h3><p>Dias entre a reserva e o check-in.</p></div></div><div class="chart-box compact"><canvas id="advance-chart"></canvas></div></article><article class="panel chart-card"><div class="card-head"><div><h3>Estadia média</h3><p>Tempo médio de permanência.</p></div></div><div class="chart-box compact"><canvas id="stay-chart"></canvas></div></article><article class="panel chart-card"><div class="card-head"><div><h3>Cancelamento</h3><p>Participação de reservas canceladas.</p></div></div><div class="chart-box compact"><canvas id="cancel-chart"></canvas></div></article></section>
 
     <section class="profile-grid"><article class="panel chart-card"><div class="card-head"><div><h3>Origem das reservas</h3><p id="origin-caption">Brasil e mercado internacional.</p></div></div><div class="chart-box compact"><canvas id="origin-chart"></canvas></div></article><article class="panel chart-card"><div class="card-head"><div><h3>Forma de pagamento</h3><p id="payment-caption">Último ano disponível na planilha.</p></div></div><div class="chart-box compact"><canvas id="payment-chart"></canvas></div></article><article class="panel reading-card"><span class="eyebrow">LEITURA EXECUTIVA</span><h3>O que os dados indicam</h3><div id="insights"></div></article></section>
 
-    <section class="panel methodology"><div><span class="eyebrow">METODOLOGIA</span><h3>Como interpretar este painel</h3></div><div class="notes"><p><strong>Linhas tracejadas</strong> identificam séries classificadas como estimadas na planilha.</p><p><strong>Reservas:</strong> a base disponível contém um índice visual aproximado, não volume absoluto de reservas.</p><p><strong>Anos incompletos:</strong> comparações consideram os meses presentes nas duas séries quando o filtro está em “Meses disponíveis”.</p><p><strong>Origem e pagamento:</strong> quando o ano escolhido não tiver informação, é exibido o ano mais recente disponível.</p></div></section>
+    <section class="panel methodology"><div><span class="eyebrow">METODOLOGIA</span><h3>Como interpretar este painel</h3></div><div class="notes"><p><strong>Abrangência:</strong> todos os indicadores referem-se a Gramado, exceto a ocupação, que abrange Gramado e Canela.</p><p><strong>Linhas tracejadas</strong> e a indicação “estimado” identificam valores aproximados; linhas contínuas representam dados informados.</p><p><strong>Reservas:</strong> todas as séries são estimadas e apresentadas somente como tendência visual, sem valores.</p><p><strong>Anos incompletos:</strong> comparações consideram os meses presentes nas duas séries quando o filtro está em “Meses disponíveis”.</p><p><strong>Origem e pagamento:</strong> quando o ano escolhido não tiver informação, é exibido o ano mais recente disponível.</p></div></section>
     <footer>Observatório de Hotelaria · Gramado & Canela <span>Atualização automática a partir de <code>dados.xlsx</code></span></footer>
   </main>
 </body>
