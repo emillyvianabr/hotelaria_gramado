@@ -3,28 +3,43 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f5f7f3">
+  <meta name="theme-color" content="#004B13">
+  <link rel="icon" type="image/png" href="assets/caracol-simbolo.png">
   <meta name="description" content="Monitor de indicadores de hotelaria, demanda e comportamento turístico em Gramado e Canela.">
   <title>Observatório de Hotelaria | Gramado & Canela</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="preload" href="assets/fonts/Stolzl-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/Stolzl-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=20261016">
   <script defer src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
-  <script defer src="app.js"></script>
+  <script defer src="app.js?v=20261016"></script>
 </head>
 <body>
-  <main class="shell">
-    <header class="masthead">
-      <div>
-        <span class="eyebrow">INTELIGÊNCIA DE MERCADO · SERRA GAÚCHA</span>
-        <h1>Hotelaria <span>&</span> demanda turística</h1>
+  <div class="accent-bar"></div>
+  <header class="site-header">
+    <div class="shell brand-row">
+      <img class="brand-logo" src="assets/logo-grupo-iter-color.png" alt="Grupo Iter" width="158" height="38">
+      <span class="brand-divider" aria-hidden="true"></span>
+      <span class="brand-pillar">Iter Parques</span>
+    </div>
+    <div class="shell header-grid">
+      <div class="title-block">
+        <div class="eyebrow"><span></span> Inteligência de Mercado · Serra Gaúcha</div>
+        <div class="title-row">
+          <img class="park-mark" src="assets/caracol-simbolo.png" alt="Símbolo do Parque do Caracol" width="64" height="64">
+          <h1>Hotelaria <em>&amp; demanda turística</em></h1>
+        </div>
         <p class="intro">Indicadores de hotelaria de Gramado; a taxa de ocupação acompanha, conjuntamente, Gramado e Canela.</p>
       </div>
-      <div class="source-chip"><span></span><div><strong>BASE CONECTADA</strong><small id="updated-at">Lendo dados.xlsx</small></div></div>
-    </header>
+      <div class="header-meta">
+        <div class="meta-label">Base conectada</div>
+        <div class="meta-value" id="updated-at">Lendo dados.xlsx</div>
+        <div class="meta-note">Atualização automática · dados.xlsx</div>
+      </div>
+    </div>
+  </header>
 
+  <main class="shell dashboard">
     <section class="controls panel" aria-label="Filtros do painel">
       <label>Ano de análise<select id="focus-year"></select></label>
       <label>Comparar com<select id="compare-year"></select></label>
@@ -49,7 +64,10 @@
     <section class="profile-grid"><article class="panel chart-card"><div class="card-head"><div><h3>Origem das reservas</h3><p id="origin-caption">Brasil e mercado internacional.</p></div></div><div class="chart-box compact"><canvas id="origin-chart"></canvas></div></article><article class="panel chart-card"><div class="card-head"><div><h3>Forma de pagamento</h3><p id="payment-caption">Último ano disponível na planilha.</p></div></div><div class="chart-box compact"><canvas id="payment-chart"></canvas></div></article><article class="panel reading-card"><span class="eyebrow">LEITURA EXECUTIVA</span><h3>O que os dados indicam</h3><div id="insights"></div></article></section>
 
     <section class="panel methodology"><div><span class="eyebrow">METODOLOGIA</span><h3>Como interpretar este painel</h3></div><div class="notes"><p><strong>Abrangência:</strong> todos os indicadores referem-se a Gramado, exceto a ocupação, que abrange Gramado e Canela.</p><p><strong>Linhas tracejadas</strong> e a indicação “estimado” identificam valores aproximados; linhas contínuas representam dados informados.</p><p><strong>Reservas:</strong> todas as séries são estimadas e apresentadas somente como tendência visual, sem valores.</p><p><strong>Anos incompletos:</strong> comparações consideram os meses presentes nas duas séries quando o filtro está em “Meses disponíveis”.</p><p><strong>Origem e pagamento:</strong> quando o ano escolhido não tiver informação, é exibido o ano mais recente disponível.</p></div></section>
-    <footer>Observatório de Hotelaria · Gramado & Canela <span>Atualização automática a partir de <code>dados.xlsx</code></span></footer>
+    <footer>
+      <span class="footer-brand"><img src="assets/logo-grupo-iter-color.png" alt="Grupo Iter" width="91" height="22"><span>Observatório de Hotelaria · Gramado &amp; Canela</span></span>
+      <span>Atualização automática a partir de <code>dados.xlsx</code></span>
+    </footer>
   </main>
 </body>
 </html>
